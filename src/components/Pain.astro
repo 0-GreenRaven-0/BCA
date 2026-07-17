@@ -1,0 +1,35 @@
+---
+const questions = [
+	"How many times have you had to miss on special occasions or school events because your 9 to 5 had you anchored to your duties?",
+	'How many family dinners you had to sacrifice for some "urgent work calls" or sudden change of schedule at work?',
+	"When was the last time you got the chance to prepare a warm homemade meal and share a memorable moments with your loved ones at the table?",
+];
+---
+
+<section class="relative pt-8 pb-14 md:pt-16 md:pb-36">
+	<div class="container-page relative">
+		<div class="relative mt-4 ml-auto max-w-3xl sm:flex sm:items-center sm:gap-6 md:mt-8">
+			<img
+				src="/purple%20loudspeaker.png"
+				alt=""
+				aria-hidden="true"
+				class="absolute -top-2 right-0 h-24 w-24 object-contain sm:static sm:order-2 sm:h-32 sm:w-32 sm:shrink-0 md:h-44 md:w-44"
+			/>
+			<h2 class="text-balance text-left font-display text-3xl leading-tight font-semibold text-black sm:min-w-0 sm:text-right sm:text-5xl md:text-6xl">
+				To all <span class="text-violet-ray">superhero</span> moms out there:
+			</h2>
+		</div>
+
+		<ul class="mx-auto mt-8 max-w-5xl pl-6 md:mt-32 md:pl-10">
+			{
+				questions.map((question) => (
+					<li class="py-3 text-center md:py-6">
+						<p class="inline-block max-w-5xl text-left font-sans text-lg leading-snug font-semibold text-black md:text-3xl">
+							{question}
+						</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

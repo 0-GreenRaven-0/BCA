@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+	/* Pushed past the default 768px so tablets (e.g. 768px-wide iPad Mini)
+	   get the mobile-style layout instead of the cramped "desktop" one —
+	   every md: utility across the site now activates at 1024px+. */
+	--breakpoint-md: 1024px;
+
+	--font-display: "Playfair Display", serif;
+	--font-sans: "Manrope", ui-sans-serif, sans-serif;
+	--font-script: "Dancing Script", cursive;
+
+	--color-violet-ray: #8b1393;
+	--color-mauve: #e5c1fd;
+	--color-accent: #01ba26;
+	--color-black: #000000;
+	--color-white: #ffffff;
+
+	--color-cream: #fbf7fd;
+}
+
+/* Reusable component classes — built from Tailwind utilities via @apply.
+   Add one entry per recurring UI pattern (e.g. buttons, cards, section wrappers). */
+@layer components {
+	/* Layout */
+	.container-page {
+		@apply mx-auto w-full max-w-7xl px-6 md:px-10;
+	}
+
+	/* Buttons */
+	.btn-primary {
+		@apply inline-flex items-center gap-3 rounded-full bg-white py-4 pr-3 pl-8 font-display text-lg font-semibold text-violet-ray shadow-[0_10px_20px_-6px_rgba(139,19,147,0.35)] transition duration-300 hover:-translate-y-0.5 hover:brightness-105 active:translate-y-0 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)];
+	}
+
+	.btn-icon {
+		@apply flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-violet-ray text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] transition duration-300 group-hover:translate-x-0.5;
+	}
+
+	/* Section furniture */
+	.eyebrow {
+		@apply font-sans text-xs font-bold tracking-[0.25em] text-violet-ray uppercase;
+	}
+
+	.eyebrow-on-dark {
+		@apply font-sans text-xs font-bold tracking-[0.25em] text-mauve uppercase;
+	}
+
+	/* Cards */
+	.stat-card {
+		@apply rounded-3xl border border-white/15 bg-white/10 p-8 backdrop-blur-sm transition duration-300 hover:bg-white/15;
+	}
+
+	.testimonial-card {
+		@apply flex h-full flex-col justify-between rounded-3xl border border-mauve/60 bg-white p-8 shadow-sm shadow-violet-ray/5 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-ray/10;
+	}
+
+	.avatar-badge {
+		@apply flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-violet-ray font-display text-sm font-bold text-white;
+	}
+}
+
+/* Custom one-off utility classes that Tailwind doesn't provide out of the box. */
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+
+	.bg-noise {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+	}
+}

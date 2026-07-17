@@ -1,0 +1,114 @@
+---
+const navLinks = [
+	{ href: "#about", label: "About" },
+	{ href: "#program", label: "Program" },
+	{ href: "#reviews", label: "Reviews" },
+	{ href: "#book-a-call", label: "Book a call" },
+];
+---
+
+<header class="absolute inset-x-0 top-0 z-50">
+	<div class="container-page flex items-center justify-between gap-8 py-6 md:justify-start">
+		<img src="/BCA2.png" alt="Bianca's Closer Academy" class="h-12 w-auto md:h-16" />
+
+		<nav class="hidden items-center gap-6 md:flex">
+			{
+				navLinks.map((link) => (
+					<a
+						href={link.href}
+						class="relative font-script text-2xl font-extrabold text-black/70 transition after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-current after:transition-all after:duration-300 hover:text-violet-ray hover:after:w-full md:text-white/90 md:hover:text-white"
+					>
+						{link.label}
+					</a>
+				))
+			}
+		</nav>
+
+		<button
+			id="nav-toggle"
+			type="button"
+			aria-label="Open menu"
+			aria-expanded="false"
+			aria-controls="mobile-nav"
+			class="nav-toggle relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-violet-ray shadow-md md:hidden"
+		>
+			<span class="hamburger-bar hamburger-bar--top"></span>
+			<span class="hamburger-bar hamburger-bar--mid"></span>
+			<span class="hamburger-bar hamburger-bar--bottom"></span>
+		</button>
+	</div>
+
+	<nav
+		id="mobile-nav"
+		class="mobile-nav max-h-0 overflow-hidden bg-violet-ray transition-[max-height] duration-300 ease-in-out md:hidden"
+	>
+		<div class="flex flex-col gap-1 px-6 pt-2 pb-6">
+			{
+				navLinks.map((link) => (
+					<a
+						href={link.href}
+						class="rounded-xl px-2 py-3 font-script text-2xl font-extrabold text-white/85 transition hover:text-white"
+					>
+						{link.label}
+					</a>
+				))
+			}
+		</div>
+	</nav>
+</header>
+
+<style>
+	.hamburger-bar {
+		position: absolute;
+		width: 1.25rem;
+		height: 2px;
+		border-radius: 2px;
+		background: currentColor;
+		transition:
+			transform 0.3s ease,
+			opacity 0.3s ease;
+	}
+
+	.hamburger-bar--top {
+		transform: translateY(-6px);
+	}
+
+	.hamburger-bar--bottom {
+		transform: translateY(6px);
+	}
+
+	.nav-toggle.is-open .hamburger-bar--top {
+		transform: translateY(0) rotate(45deg);
+	}
+
+	.nav-toggle.is-open .hamburger-bar--mid {
+		opacity: 0;
+	}
+
+	.nav-toggle.is-open .hamburger-bar--bottom {
+		transform: translateY(0) rotate(-45deg);
+	}
+</style>
+
+<script>
+	const toggle = document.getElementById("nav-toggle");
+	const menu = document.getElementById("mobile-nav");
+
+	const closeMenu = () => {
+		toggle?.classList.remove("is-open");
+		menu?.classList.remove("max-h-96");
+		menu?.classList.add("max-h-0");
+		toggle?.setAttribute("aria-expanded", "false");
+	};
+
+	toggle?.addEventListener("click", () => {
+		const isOpen = toggle.classList.toggle("is-open");
+		menu?.classList.toggle("max-h-96", isOpen);
+		menu?.classList.toggle("max-h-0", !isOpen);
+		toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+	});
+
+	menu?.querySelectorAll("a").forEach((link) => {
+		link.addEventListener("click", closeMenu);
+	});
+</script>

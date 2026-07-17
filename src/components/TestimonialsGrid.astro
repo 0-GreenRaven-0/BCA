@@ -1,0 +1,97 @@
+---
+const testimonials = [
+	{
+		quote:
+			"I went from missing every school pickup to being home by 4pm — and making more than I did in pharma sales.",
+		name: "Camille R.",
+		role: "Former Territory Sales Manager",
+	},
+	{
+		quote:
+			"I was skeptical after two failed dropshipping attempts. This was the first program that actually gave me real skills, not just hype.",
+		name: "Marcus T.",
+		role: "22, University Student",
+	},
+	{
+		quote:
+			"Within 6 weeks I closed my first $8k deal. I still can't believe I get to do this from my kitchen table.",
+		name: "Priya S.",
+		role: "Former HR Business Partner",
+	},
+	{
+		quote:
+			"Bianca's approach isn't pushy — it's consultative, which finally made sales feel like something I could actually do.",
+		name: "Daniel K.",
+		role: "Career Changer",
+	},
+	{
+		quote:
+			"I hit $14,000 in my third month. My husband thought I was joking when I told him.",
+		name: "Jasmine L.",
+		role: "Mother of 2",
+	},
+	{
+		quote:
+			"No fluff, no fake hype — just real frameworks and real practice calls. That's what sold me on this program.",
+		name: "Andre M.",
+		role: "Recent Graduate",
+	},
+	{
+		quote:
+			"I was so burnt out from my 9-5 that I almost gave up on ever having flexibility. This program gave me my evenings back.",
+		name: "Sofia H.",
+		role: "Former Account Executive",
+	},
+];
+
+const initials = (name: string) =>
+	name
+		.split(" ")
+		.map((part) => part[0])
+		.join("");
+---
+
+<script>
+	import "@lottiefiles/dotlottie-wc";
+</script>
+
+<section id="reviews" class="relative bg-white py-28 md:py-36">
+	<div class="container-page relative grid gap-16 md:grid-cols-[0.8fr_1.2fr] md:gap-20">
+		<div class="text-center md:sticky md:top-1/2 md:-translate-y-1/2 md:self-start">
+			<p class="relative inline-block -rotate-3 font-script text-6xl text-violet-ray sm:text-7xl">
+				<dotlottie-wc
+					src="/butterfly.lottie"
+					autoplay
+					loop
+					speed="0.25"
+					class="pointer-events-none absolute -top-4 -left-2 h-14 w-14 -rotate-12 md:-top-5 md:-left-3 md:h-16 md:w-16"
+				></dotlottie-wc>
+				Closer Love
+			</p>
+		</div>
+
+		<div class="flex flex-col gap-20 md:gap-28">
+			{
+				testimonials.map((t) => (
+					<div>
+						<blockquote class="text-balance font-display text-3xl leading-tight font-semibold text-black md:text-4xl">
+							"{t.quote}"
+						</blockquote>
+
+						<div class="mt-8 flex items-center gap-4">
+							<span class="avatar-badge h-14! w-14!">
+								{initials(t.name)}
+							</span>
+							<span>
+								<span class="block font-script text-2xl text-black">{t.name}</span>
+								<span class="block text-xs font-semibold tracking-wide text-black/55 uppercase">
+									{t.role}
+								</span>
+							</span>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>

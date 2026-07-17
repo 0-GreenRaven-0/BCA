@@ -1,0 +1,104 @@
+---
+---
+
+<script>
+	import "@lottiefiles/dotlottie-wc";
+</script>
+
+<section class="relative bg-white pt-24 pb-12 md:pt-28 md:pb-12">
+	<!-- Desktop-only diagonal split: brand-color panel behind the headline column.
+	     Tapers to a point well past the section's own bottom edge, so it bleeds
+	     gracefully into the next section instead of being cut off with a hard edge. -->
+	<div
+		class="pointer-events-none absolute inset-x-0 top-0 z-0 hidden bg-[linear-gradient(135deg,#3d0a52_0%,#8b1393_55%,#c65fd1_100%)] md:block"
+		style="clip-path: polygon(0 0, 72% 0, 0 100%); bottom: -40rem;"
+		aria-hidden="true"
+	>
+	</div>
+
+	<!-- Mobile-only version of the same diagonal-split language, rotated to a
+	     top/bottom split across the full section: solid brand-color panel on
+	     top, cream below, divided by one diagonal line (no taper to a point). -->
+	<div
+		class="pointer-events-none absolute inset-0 z-0 block bg-[linear-gradient(160deg,#3d0a52_0%,#8b1393_55%,#c65fd1_100%)] md:hidden"
+		style="clip-path: polygon(0 0, 100% 0, 100% 38%, 0 78%);"
+		aria-hidden="true"
+	>
+	</div>
+
+	<div class="container-page relative grid items-center gap-12 text-center md:grid-cols-[1fr_1.4fr] md:items-start md:gap-10 md:text-left">
+		<div class="mx-auto max-w-md md:mx-0 md:max-w-xl md:pr-8 md:pl-2">
+			<h1
+				class="text-balance font-display text-3xl leading-[1.1] font-semibold text-white sm:text-5xl md:text-6xl"
+			>
+				Build a <span class="whitespace-nowrap">5-figure</span> remote sales career
+			</h1>
+
+			<p class="mx-auto mt-4 max-w-xs text-balance text-sm leading-relaxed text-white/85 sm:max-w-xl sm:text-base md:mx-0 md:text-lg md:text-white">
+				That'll allow you to be part of your kid's childhood without worrying about income
+				again!
+			</p>
+
+			<div class="mt-8 hidden flex-wrap items-center justify-center gap-6 md:flex md:justify-start">
+				<a href="#book-a-call" class="btn-primary group">
+					Book a call with our team
+					<span
+						class="btn-icon"
+						style="-webkit-mask-image: url(/butterflymask.webp); mask-image: url(/butterflymask.webp); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"
+					></span>
+				</a>
+			</div>
+		</div>
+
+		<!-- VSL: swap the poster/watermark below for the real thumbnail + hook up the play button to your video embed -->
+		<div class="relative mx-auto w-full max-w-md md:mx-0 md:mt-10 md:ml-auto md:max-w-none">
+			<button
+				type="button"
+				aria-label="Play the BCA video"
+				class="group relative block aspect-video w-full overflow-hidden rounded-3xl border border-black/10 bg-black shadow-2xl shadow-violet-ray/20"
+			>
+				<img
+					src="/vsl%20cover.png"
+					alt=""
+					aria-hidden="true"
+					class="absolute inset-0 h-full w-full object-cover"
+				/>
+
+				<span class="absolute inset-0 flex items-center justify-center">
+					<span class="absolute h-16 w-16 rounded-full bg-black/25 backdrop-blur-sm md:h-24 md:w-24"></span>
+					<span
+						class="relative flex h-14 w-14 items-center justify-center rounded-full bg-white text-violet-ray shadow-lg transition duration-300 group-hover:scale-110 md:h-20 md:w-20"
+					>
+						<svg viewBox="0 0 24 24" class="ml-1 h-5 w-5 fill-current md:h-7 md:w-7">
+							<path d="M8 5v14l11-7z"></path>
+						</svg>
+					</span>
+				</span>
+
+				<span
+					class="absolute right-4 bottom-4 rounded-full bg-black/60 px-3 py-1 font-sans text-xs font-semibold text-white backdrop-blur-sm"
+				>
+					4:12
+				</span>
+			</button>
+
+			<dotlottie-wc
+				src="/butterfly.lottie"
+				autoplay
+				loop
+				speed="0.25"
+				class="pointer-events-none absolute -top-10 -right-8 h-20 w-20 -rotate-45 md:-top-16 md:-right-2 md:h-36 md:w-36"
+			></dotlottie-wc>
+		</div>
+
+		<div class="mt-4 flex flex-wrap items-center justify-center gap-6 md:hidden">
+			<a href="#book-a-call" class="btn-primary group bg-violet-ray text-white">
+				Book a call with our team
+				<span
+					class="btn-icon bg-white text-violet-ray"
+					style="-webkit-mask-image: url(/butterflymask.webp); mask-image: url(/butterflymask.webp); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"
+				></span>
+			</a>
+		</div>
+	</div>
+</section>

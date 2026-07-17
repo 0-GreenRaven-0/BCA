@@ -1,0 +1,63 @@
+---
+const marks = [
+	{ top: "6%", left: "3%", size: "5rem", rotate: "-14deg", opacity: 0.9 },
+	{ top: "68%", left: "8%", size: "3rem", rotate: "10deg", opacity: 0.35 },
+	{ top: "14%", left: "88%", size: "3.5rem", rotate: "16deg", opacity: 0.5 },
+	{ top: "74%", left: "84%", size: "5.5rem", rotate: "-8deg", opacity: 0.7 },
+	{ top: "40%", left: "94%", size: "2.25rem", rotate: "6deg", opacity: 0.3 },
+	{ top: "2%", left: "45%", size: "2.5rem", rotate: "-6deg", opacity: 0.25 },
+];
+---
+
+<section id="about" class="relative overflow-hidden bg-white py-28 md:py-36">
+	<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+		{
+			marks.map((m) => (
+				<img
+					src="/Question Mark.png"
+					alt=""
+					class="absolute"
+					style={{
+						top: m.top,
+						left: m.left,
+						height: m.size,
+						width: m.size,
+						opacity: m.opacity,
+						transform: `rotate(${m.rotate})`,
+					}}
+				/>
+			))
+		}
+	</div>
+
+	<div class="container-page relative">
+		<div class="mx-auto max-w-6xl text-center">
+			<h2 class="text-balance font-display text-4xl leading-tight font-semibold text-black md:text-6xl">
+				Now to answer your question: what is{" "}
+				<span class="text-violet-ray">{"{"}remote ticket sales{"}"}</span>,
+				exactly?
+			</h2>
+
+			<p class="mx-auto mt-8 max-w-2xl text-balance text-base leading-relaxed font-semibold text-[#ff0894] md:text-xl">
+				No, it's not some false "earn from your chair's warmth" scheme, affiliate marketing, or
+				randomly calling people.
+			</p>
+
+			<p class="mx-auto mt-10 max-w-5xl text-left font-sans text-xl leading-snug font-semibold text-black md:text-2xl">
+				High-ticket remote sales is a highly sought-after skill by businesses selling
+				$2,000–$10,000 premium services like coaching programs, enterprise software, real estate,
+				high-end consulting, or investment opportunities.
+			</p>
+
+			<p class="mx-auto mt-6 max-w-5xl text-left font-sans text-xl leading-snug font-semibold text-black md:text-2xl">
+				This means you'll be working with already-established businesses, selling these products
+				and services to people who are genuinely interested and want to speak with a real human to
+				help them decide whether an offer is right for them.
+			</p>
+
+			<p class="mt-10 font-display text-2xl font-semibold text-violet-ray md:text-3xl">
+				And that's where you come in!
+			</p>
+		</div>
+	</div>
+</section>

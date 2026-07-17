@@ -1,0 +1,76 @@
+---
+const year = new Date().getFullYear();
+
+const navLinks = [
+	{ href: "#about", label: "About" },
+	{ href: "#program", label: "Program" },
+	{ href: "#reviews", label: "Reviews" },
+	{ href: "#book-a-call", label: "Book a call" },
+];
+
+const socials = [
+	{ label: "Instagram", href: "#" },
+	{ label: "TikTok", href: "#" },
+	{ label: "YouTube", href: "#" },
+];
+---
+
+<footer class="relative overflow-hidden bg-black pt-20 pb-10">
+	<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+		<div class="absolute -top-16 -left-10 h-64 w-64 rounded-full bg-violet-ray/20 blur-3xl"></div>
+		<div class="absolute -right-10 -bottom-16 h-72 w-72 rounded-full bg-violet-ray/20 blur-3xl"></div>
+	</div>
+
+	<div class="container-page relative">
+		<div class="grid gap-12 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
+			<div class="flex items-start">
+				<img src="/BCA2.png" alt="Bianca's Closer Academy" class="h-24 w-auto md:h-32" />
+			</div>
+
+			<div>
+				<p class="font-sans text-xs font-bold tracking-[0.25em] text-white/50 uppercase">
+					Explore
+				</p>
+				<ul class="mt-5 space-y-3">
+					{
+						navLinks.map((link) => (
+							<li>
+								<a href={link.href} class="text-white/80 transition hover:text-white">
+									{link.label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+
+			<div>
+				<p class="font-sans text-xs font-bold tracking-[0.25em] text-white/50 uppercase">
+					Say hi
+				</p>
+				<ul class="mt-5 space-y-3">
+					<li>
+						<a href="mailto:hello@biancascloseracademy.com" class="text-white/80 transition hover:text-white">
+							hello@biancascloseracademy.com
+						</a>
+					</li>
+					{
+						socials.map((social) => (
+							<li>
+								<a href={social.href} class="text-white/80 transition hover:text-white">
+									{social.label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</div>
+
+		<div class="mt-16 border-t border-white/15 pt-8 text-center md:text-left">
+			<p class="text-sm text-white/60">
+				&copy; {year} Bianca's Closer Academy. All rights reserved.
+			</p>
+		</div>
+	</div>
+</footer>
