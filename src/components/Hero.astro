@@ -5,12 +5,12 @@
 	import "@lottiefiles/dotlottie-wc";
 </script>
 
-<section class="relative bg-white pt-24 pb-12 md:pt-28 md:pb-12">
+<section class="relative bg-white pt-24 pb-4 lg:pt-28 lg:pb-12">
 	<!-- Desktop-only diagonal split: brand-color panel behind the headline column.
 	     Tapers to a point well past the section's own bottom edge, so it bleeds
 	     gracefully into the next section instead of being cut off with a hard edge. -->
 	<div
-		class="pointer-events-none absolute inset-x-0 top-0 z-0 hidden bg-[linear-gradient(135deg,#3d0a52_0%,#8b1393_55%,#c65fd1_100%)] md:block"
+		class="pointer-events-none absolute inset-x-0 top-0 z-0 hidden bg-[linear-gradient(135deg,#3d0a52_0%,#8b1393_55%,#c65fd1_100%)] lg:block"
 		style="clip-path: polygon(0 0, 72% 0, 0 100%); bottom: -40rem;"
 		aria-hidden="true"
 	>
@@ -20,28 +20,32 @@
 	     top/bottom split across the full section: solid brand-color panel on
 	     top, cream below, divided by one diagonal line (no taper to a point). -->
 	<div
-		class="pointer-events-none absolute inset-0 z-0 block bg-[linear-gradient(160deg,#3d0a52_0%,#8b1393_55%,#c65fd1_100%)] md:hidden"
+		class="pointer-events-none absolute inset-0 z-0 block bg-[linear-gradient(160deg,#3d0a52_0%,#8b1393_55%,#c65fd1_100%)] lg:hidden"
 		style="clip-path: polygon(0 0, 100% 0, 100% 38%, 0 78%);"
 		aria-hidden="true"
 	>
 	</div>
 
-	<div class="container-page relative grid items-center gap-12 text-center md:grid-cols-[1fr_1.4fr] md:items-start md:gap-10 md:text-left">
-		<div class="mx-auto max-w-md md:mx-0 md:max-w-xl md:pr-8 md:pl-2">
+	<div class="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-6 text-center lg:max-w-[100rem] lg:grid-cols-[36rem_1fr] lg:items-start lg:gap-10 lg:px-10 lg:text-left">
+		<div class="mx-auto max-w-md lg:mx-0 lg:max-w-xl lg:pr-8 lg:pl-2 lg:w-140">
 			<h1
-				class="text-balance font-display text-3xl leading-[1.1] font-semibold text-white sm:text-5xl md:text-6xl"
+				class="text-balance font-display text-4xl leading-[1.1] font-normal text-white sm:text-5xl lg:text-6xl"
 			>
-				Build a <span class="whitespace-nowrap">5-figure</span> remote sales career
+				Build a{" "}
+				<span class="inline-block -rotate-3 text-5xl font-script font-bold whitespace-nowrap underline decoration-[#ff0894] decoration-4 underline-offset-8 sm:text-6xl lg:text-7xl">
+					5-figure
+				</span>{" "}
+				remote sales career
 			</h1>
 
-			<p class="mx-auto mt-4 max-w-xs text-balance text-sm leading-relaxed text-white/85 sm:max-w-xl sm:text-base md:mx-0 md:text-lg md:text-white">
-				That'll allow you to be part of your kid's childhood without worrying about income
-				again!
+			<p class="mx-auto mt-4 max-w-xs text-balance text-sm leading-relaxed text-white/85 sm:max-w-xl sm:text-base lg:mx-0 lg:text-lg lg:text-white">
+				Never anchor yourself in a job that robs your time with your loved ones & cap your
+				income!
 			</p>
 
-			<div class="mt-8 hidden flex-wrap items-center justify-center gap-6 md:flex md:justify-start">
+			<div class="mt-8 hidden flex-wrap items-center justify-center gap-6 lg:flex lg:justify-start">
 				<a href="#book-a-call" class="btn-primary group">
-					Book a call with our team
+					Let's get you started!
 					<span
 						class="btn-icon"
 						style="-webkit-mask-image: url(/butterflymask.webp); mask-image: url(/butterflymask.webp); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"
@@ -51,11 +55,11 @@
 		</div>
 
 		<!-- VSL: swap the poster/watermark below for the real thumbnail + hook up the play button to your video embed -->
-		<div class="relative mx-auto w-full max-w-md md:mx-0 md:mt-10 md:ml-auto md:max-w-none">
+		<div class="relative mx-auto w-full max-w-md lg:mx-0 lg:mt-10 lg:ml-auto lg:max-w-none">
 			<button
 				type="button"
 				aria-label="Play the BCA video"
-				class="group relative block aspect-video w-full overflow-hidden rounded-3xl border border-black/10 bg-black shadow-2xl shadow-violet-ray/20"
+				class="group relative block aspect-video w-full overflow-hidden rounded-3xl bg-black shadow-2xl shadow-violet-ray/20"
 			>
 				<img
 					src="/vsl%20cover.png"
@@ -65,11 +69,11 @@
 				/>
 
 				<span class="absolute inset-0 flex items-center justify-center">
-					<span class="absolute h-16 w-16 rounded-full bg-black/25 backdrop-blur-sm md:h-24 md:w-24"></span>
+					<span class="absolute h-16 w-16 rounded-full bg-black/25 backdrop-blur-sm lg:h-24 lg:w-24"></span>
 					<span
-						class="relative flex h-14 w-14 items-center justify-center rounded-full bg-white text-violet-ray shadow-lg transition duration-300 group-hover:scale-110 md:h-20 md:w-20"
+						class="relative flex h-14 w-14 items-center justify-center rounded-full bg-white text-violet-ray shadow-lg transition duration-300 group-hover:scale-110 lg:h-20 lg:w-20"
 					>
-						<svg viewBox="0 0 24 24" class="ml-1 h-5 w-5 fill-current md:h-7 md:w-7">
+						<svg viewBox="0 0 24 24" class="ml-1 h-5 w-5 fill-current lg:h-7 lg:w-7">
 							<path d="M8 5v14l11-7z"></path>
 						</svg>
 					</span>
@@ -87,13 +91,13 @@
 				autoplay
 				loop
 				speed="0.25"
-				class="pointer-events-none absolute -top-10 -right-8 h-20 w-20 -rotate-45 md:-top-16 md:-right-2 md:h-36 md:w-36"
+				class="pointer-events-none absolute -top-10 -right-8 h-20 w-20 -rotate-45 lg:-top-16 lg:-right-2 lg:h-36 lg:w-36"
 			></dotlottie-wc>
 		</div>
 
-		<div class="mt-4 flex flex-wrap items-center justify-center gap-6 md:hidden">
+		<div class="mt-4 flex flex-wrap items-center justify-center gap-6 lg:hidden">
 			<a href="#book-a-call" class="btn-primary group bg-violet-ray text-white">
-				Book a call with our team
+				Let's get you started!
 				<span
 					class="btn-icon bg-white text-violet-ray"
 					style="-webkit-mask-image: url(/butterflymask.webp); mask-image: url(/butterflymask.webp); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"

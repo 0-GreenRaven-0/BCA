@@ -1,11 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-	/* Pushed past the default 768px so tablets (e.g. 768px-wide iPad Mini)
-	   get the mobile-style layout instead of the cramped "desktop" one —
-	   every md: utility across the site now activates at 1024px+. */
-	--breakpoint-md: 1024px;
-
 	--font-display: "Playfair Display", serif;
 	--font-sans: "Manrope", ui-sans-serif, sans-serif;
 	--font-script: "Dancing Script", cursive;
@@ -24,7 +19,7 @@
 @layer components {
 	/* Layout */
 	.container-page {
-		@apply mx-auto w-full max-w-7xl px-6 md:px-10;
+		@apply mx-auto w-full max-w-7xl px-6 lg:px-10;
 	}
 
 	/* Buttons */
@@ -67,5 +62,15 @@
 
 	.bg-noise {
 		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+	}
+}
+
+/* Closes the horizontal-scroll gap caused by decorative elements bleeding
+   past the viewport edge on narrow screens. Scoped below the lg breakpoint
+   only — setting this on <html> unconditionally breaks position: sticky
+   (used at lg: and up), so desktop is left untouched. */
+@media (max-width: 1023px) {
+	html {
+		overflow-x: hidden;
 	}
 }

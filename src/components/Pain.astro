@@ -1,35 +1,113 @@
 ---
 const questions = [
-	"How many times have you had to miss on special occasions or school events because your 9 to 5 had you anchored to your duties?",
-	'How many family dinners you had to sacrifice for some "urgent work calls" or sudden change of schedule at work?',
-	"When was the last time you got the chance to prepare a warm homemade meal and share a memorable moments with your loved ones at the table?",
+	'How many times did you miss your kid\'s school events because your 9 to 5 said "leave or you\'re fired"?',
+	"When was the last time your effort and sacrifices were rewarded or AT LEAST noticed and appreciated by your corporate?",
+	'Aren\'t you tired of sitting all day in one place trying to get your hands on a raise that often gets overlooked or handed to "that one person" in the company?',
 ];
 ---
 
-<section class="relative pt-8 pb-14 md:pt-16 md:pb-36">
+<section class="relative pt-2 pb-6 lg:pt-16 lg:pb-36">
 	<div class="container-page relative">
-		<div class="relative mt-4 ml-auto max-w-3xl sm:flex sm:items-center sm:gap-6 md:mt-8">
+		<div class="relative mt-0 ml-auto max-w-3xl sm:flex sm:items-center sm:gap-6 lg:mt-8 lg:max-w-6xl">
 			<img
 				src="/purple%20loudspeaker.png"
 				alt=""
 				aria-hidden="true"
-				class="absolute -top-2 right-0 h-24 w-24 object-contain sm:static sm:order-2 sm:h-32 sm:w-32 sm:shrink-0 md:h-44 md:w-44"
+				class="absolute -top-2 right-0 h-24 w-24 object-contain sm:static sm:order-2 sm:h-32 sm:w-32 sm:shrink-0 lg:h-56 lg:w-56"
 			/>
-			<h2 class="text-balance text-left font-display text-3xl leading-tight font-semibold text-black sm:min-w-0 sm:text-right sm:text-5xl md:text-6xl">
-				To all <span class="text-violet-ray">superhero</span> moms out there:
+			<h2
+				id="pain-heading"
+				class="max-w-72 pr-16 text-left font-display text-3xl leading-tight font-semibold text-black sm:max-w-none sm:min-w-0 sm:pr-0 sm:text-balance sm:text-right sm:text-5xl lg:text-6xl"
+			>
+				To all <span class="text-violet-ray">superhero</span> moms and dads out there
 			</h2>
 		</div>
 
-		<ul class="mx-auto mt-8 max-w-5xl pl-6 md:mt-32 md:pl-10">
+		<ul class="mx-auto mt-4 max-w-5xl pl-6 lg:mt-32 lg:pl-10">
 			{
 				questions.map((question) => (
-					<li class="py-3 text-center md:py-6">
-						<p class="inline-block max-w-5xl text-left font-sans text-lg leading-snug font-semibold text-black md:text-3xl">
+					<li class="py-1.5 text-center lg:py-6">
+						<p class="inline-block max-w-5xl text-left font-sans text-base leading-snug font-semibold text-black lg:text-3xl">
 							{question}
 						</p>
 					</li>
 				))
 			}
 		</ul>
+
+		<div class="relative mx-auto mt-8 max-w-4xl text-center lg:mt-24">
+			<span
+				class="pointer-events-none absolute top-1/2 left-0 hidden -translate-x-full -translate-y-1/2 font-script text-[16rem] leading-none text-[#ff0894] select-none lg:block"
+				aria-hidden="true"
+			>
+				{"{"}
+			</span>
+			<span
+				class="pointer-events-none absolute top-1/2 right-0 hidden -translate-y-1/2 translate-x-full font-script text-[16rem] leading-none text-[#ff0894] select-none lg:block"
+				aria-hidden="true"
+			>
+				{"}"}
+			</span>
+
+			<p class="inline-block -rotate-2 font-script text-5xl font-bold text-[#ff0894] lg:text-6xl">
+				Sis to Sis <span class="text-black">(or Bro)</span>
+			</p>
+			<p class="mt-4 text-balance font-display text-2xl leading-relaxed font-semibold text-black lg:text-3xl">
+				That time and energy you pour everyday should be invested in something more rewarding,
+				something that buys back the time you could have spent with your loved ones
+			</p>
+		</div>
 	</div>
 </section>
+
+<style is:global>
+	.tw-char {
+		opacity: 0;
+		transition: opacity 0.02s linear;
+	}
+</style>
+
+<script>
+	function splitIntoChars(node: Node) {
+		if (node.nodeType === Node.TEXT_NODE) {
+			const text = node.textContent ?? "";
+			const fragment = document.createDocumentFragment();
+			for (const char of text) {
+				const span = document.createElement("span");
+				span.className = "tw-char";
+				span.textContent = char;
+				fragment.appendChild(span);
+			}
+			node.parentNode?.replaceChild(fragment, node);
+		} else if (node.nodeType === Node.ELEMENT_NODE) {
+			Array.from(node.childNodes).forEach(splitIntoChars);
+		}
+	}
+
+	function initPainTypewriter() {
+		const heading = document.getElementById("pain-heading");
+		if (!heading) return;
+
+		Array.from(heading.childNodes).forEach(splitIntoChars);
+		const chars = Array.from(heading.querySelectorAll<HTMLElement>(".tw-char"));
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) return;
+					chars.forEach((char, i) => {
+						setTimeout(() => {
+							char.style.opacity = "1";
+						}, i * 28);
+					});
+					observer.unobserve(heading);
+				});
+			},
+			{ threshold: 0.4 }
+		);
+
+		observer.observe(heading);
+	}
+
+	initPainTypewriter();
+</script>

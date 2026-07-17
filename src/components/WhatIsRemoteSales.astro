@@ -9,7 +9,7 @@ const marks = [
 ];
 ---
 
-<section id="about" class="relative overflow-hidden bg-white py-28 md:py-36">
+<section id="about" class="relative overflow-hidden bg-white py-28 lg:py-36">
 	<div class="pointer-events-none absolute inset-0" aria-hidden="true">
 		{
 			marks.map((m) => (
@@ -32,32 +32,104 @@ const marks = [
 
 	<div class="container-page relative">
 		<div class="mx-auto max-w-6xl text-center">
-			<h2 class="text-balance font-display text-4xl leading-tight font-semibold text-black md:text-6xl">
+			<h2
+				id="about-heading"
+				class="text-balance font-display text-4xl leading-tight font-semibold text-black lg:text-6xl"
+			>
 				Now to answer your question: what is{" "}
 				<span class="text-violet-ray">{"{"}remote ticket sales{"}"}</span>,
-				exactly?
+				exactly?<span id="about-cursor" class="tw-cursor">|</span>
 			</h2>
 
-			<p class="mx-auto mt-8 max-w-2xl text-balance text-base leading-relaxed font-semibold text-[#ff0894] md:text-xl">
+			<p class="mx-auto mt-8 max-w-2xl text-balance text-sm leading-relaxed font-semibold text-[#ff0894] lg:text-xl">
 				No, it's not some false "earn from your chair's warmth" scheme, affiliate marketing, or
 				randomly calling people.
 			</p>
 
-			<p class="mx-auto mt-10 max-w-5xl text-left font-sans text-xl leading-snug font-semibold text-black md:text-2xl">
-				High-ticket remote sales is a highly sought-after skill by businesses selling
-				$2,000–$10,000 premium services like coaching programs, enterprise software, real estate,
-				high-end consulting, or investment opportunities.
+			<p class="mx-auto mt-10 max-w-5xl text-left font-sans text-base leading-snug font-semibold text-black lg:text-2xl">
+				It's a highly sought-after skill that businesses rely on to sell premium and luxury
+				services/offers like coaching programs, enterprise software, high-end consulting,
+				investment opportunities...
 			</p>
 
-			<p class="mx-auto mt-6 max-w-5xl text-left font-sans text-xl leading-snug font-semibold text-black md:text-2xl">
-				This means you'll be working with already-established businesses, selling these products
-				and services to people who are genuinely interested and want to speak with a real human to
-				help them decide whether an offer is right for them.
+			<p class="mx-auto mt-6 max-w-5xl text-left font-sans text-base leading-snug font-semibold text-black lg:text-2xl">
+				And you only work with already-established businesses and companies people already know
+				and are interested in, so you're not banging on random people's doors like a girl scout
+				selling cookies (that's what we call inbound leads, but more on that later).
 			</p>
 
-			<p class="mt-10 font-display text-2xl font-semibold text-violet-ray md:text-3xl">
-				And that's where you come in!
-			</p>
 		</div>
 	</div>
 </section>
+
+<style is:global>
+	.tw-char {
+		opacity: 0;
+		transition: opacity 0.02s linear;
+	}
+
+	.tw-cursor {
+		opacity: 0;
+	}
+
+	.tw-cursor.is-blinking {
+		opacity: 1;
+		animation: tw-blink 0.9s step-end infinite;
+	}
+
+	@keyframes tw-blink {
+		50% {
+			opacity: 0;
+		}
+	}
+</style>
+
+<script>
+	function splitIntoChars(node: Node, skipId: string) {
+		if (node.nodeType === Node.TEXT_NODE) {
+			const text = node.textContent ?? "";
+			const fragment = document.createDocumentFragment();
+			for (const char of text) {
+				const span = document.createElement("span");
+				span.className = "tw-char";
+				span.textContent = char;
+				fragment.appendChild(span);
+			}
+			node.parentNode?.replaceChild(fragment, node);
+		} else if (node.nodeType === Node.ELEMENT_NODE) {
+			if ((node as HTMLElement).id === skipId) return;
+			Array.from(node.childNodes).forEach((child) => splitIntoChars(child, skipId));
+		}
+	}
+
+	function initAboutTypewriter() {
+		const heading = document.getElementById("about-heading");
+		const cursor = document.getElementById("about-cursor");
+		if (!heading || !cursor) return;
+
+		Array.from(heading.childNodes).forEach((child) => splitIntoChars(child, "about-cursor"));
+		const chars = Array.from(heading.querySelectorAll<HTMLElement>(".tw-char"));
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) return;
+					chars.forEach((char, i) => {
+						setTimeout(() => {
+							char.style.opacity = "1";
+						}, i * 28);
+					});
+					setTimeout(() => {
+						cursor.classList.add("is-blinking");
+					}, chars.length * 28);
+					observer.unobserve(heading);
+				});
+			},
+			{ threshold: 0.4 }
+		);
+
+		observer.observe(heading);
+	}
+
+	initAboutTypewriter();
+</script>
