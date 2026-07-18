@@ -1,0 +1,151 @@
+---
+const decorButterflies = [
+	{ top: "-4%", left: "20%", size: "4rem", rotate: "-16deg" },
+	{ top: "16%", left: "12%", size: "3.25rem", rotate: "20deg" },
+	{ top: "78%", left: "46%", size: "4.5rem", rotate: "-12deg" },
+	{ top: "10%", left: "88%", size: "3.75rem", rotate: "14deg" },
+];
+
+const stats = [
+	{ text: "Obsessed with purple", top: "82%", left: "-2%", rotate: "-8deg", size: "text-2xl lg:text-3xl" },
+	{ text: "Generated $7M+ in closed deals", top: "32%", left: "72%", rotate: "6deg", size: "text-2xl lg:text-3xl" },
+	{ text: "Charming & Caring diva", top: "48%", left: "84%", rotate: "-5deg", size: "text-xl lg:text-2xl" },
+	{
+		text: "Top closer for 3 consecutive years at the agency she worked with",
+		top: "64%",
+		left: "80%",
+		rotate: "4deg",
+		size: "text-xl lg:text-2xl",
+	},
+	{ text: "Ube Lover", top: "56%", left: "0%", rotate: "-6deg", size: "text-2xl lg:text-3xl" },
+	{
+		text: "Trained 30+ closers informally before founding BCA",
+		top: "38%",
+		left: "2%",
+		rotate: "5deg",
+		size: "text-xl lg:text-2xl",
+	},
+];
+---
+
+<script>
+	import "@lottiefiles/dotlottie-wc";
+</script>
+
+<section class="relative overflow-hidden bg-[#fbd9e9] pt-10 lg:pt-14">
+	<div class="container-page relative">
+		<h2 class="text-balance text-center font-display text-lg font-semibold text-black lg:text-2xl">
+			Our Chrysalis
+		</h2>
+
+		<div class="relative mx-auto mt-2 min-h-[380px] pb-16 max-w-5xl lg:mt-4 lg:min-h-[820px] lg:pb-0">
+			<p
+				class="absolute top-0 left-1/2 z-0 -translate-x-1/2 -rotate-3 text-center font-script text-4xl font-bold whitespace-nowrap sm:text-6xl lg:top-[8%] lg:text-9xl"
+				aria-hidden="true"
+			>
+				<span class="text-violet-ray">Cerise</span> <span class="text-black">Bianca</span>
+			</p>
+
+			<img
+				src="/Cerise%20Bianca.png"
+				alt="Cerise Bianca, founder of Bianca's Closer Academy"
+				class="absolute bottom-0 left-1/2 z-10 w-56 -translate-x-1/2 object-cover sm:w-72 lg:w-[26rem]"
+			/>
+
+			{
+				decorButterflies.map((b, i) => (
+					<dotlottie-wc
+						src="/butterfly.lottie"
+						autoplay
+						loop
+						speed="0.25"
+						class="founder-butterfly pointer-events-none absolute z-[15]"
+						data-idx={i}
+						style={{
+							top: b.top,
+							left: b.left,
+							height: b.size,
+							width: b.size,
+							transform: `rotate(${b.rotate})`,
+						}}
+					/>
+				))
+			}
+
+			{
+				stats.map((s, i) => (
+					<p
+						class:list={[
+							"founder-stat absolute z-20 max-w-56 text-balance text-center font-script font-bold text-violet-ray lg:max-w-72",
+							s.size,
+						]}
+						data-idx={i}
+						style={{
+							top: s.top,
+							left: s.left,
+							transform: `rotate(${s.rotate})`,
+						}}
+					>
+						{s.text}
+					</p>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	@media (max-width: 1023px) {
+		.founder-stat {
+			max-width: 6.5rem;
+			font-size: 0.85rem !important;
+			line-height: 1.15;
+		}
+
+		.founder-stat[data-idx="0"] {
+			top: 82% !important;
+			left: -4% !important;
+		}
+		.founder-stat[data-idx="1"] {
+			top: 16% !important;
+			left: 76% !important;
+		}
+		.founder-stat[data-idx="2"] {
+			top: 30% !important;
+			left: 78% !important;
+		}
+		.founder-stat[data-idx="3"] {
+			top: 66% !important;
+			left: 78% !important;
+		}
+		.founder-stat[data-idx="4"] {
+			top: 46% !important;
+			left: 0% !important;
+		}
+		.founder-stat[data-idx="5"] {
+			top: 16% !important;
+			left: 0% !important;
+		}
+
+		.founder-butterfly {
+			height: 2.25rem !important;
+			width: 2.25rem !important;
+		}
+		.founder-butterfly[data-idx="0"] {
+			top: 4% !important;
+			left: 6% !important;
+		}
+		.founder-butterfly[data-idx="1"] {
+			top: 40% !important;
+			left: 2% !important;
+		}
+		.founder-butterfly[data-idx="2"] {
+			top: 48% !important;
+			left: 84% !important;
+		}
+		.founder-butterfly[data-idx="3"] {
+			top: 4% !important;
+			left: 82% !important;
+		}
+	}
+</style>

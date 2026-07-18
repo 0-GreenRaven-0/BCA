@@ -1,7 +1,7 @@
 ---
 const butterflies = [
 	{ top: "3%", left: "1%", size: "1.25rem", rotate: "-11deg", opacity: 0.55 },
-	{ top: "22%", left: "7%", size: "2.4rem", rotate: "-16deg", opacity: 0.8 },
+	{ top: "50%", left: "3%", size: "2.4rem", rotate: "-16deg", opacity: 0.8 },
 	{ top: "8%", left: "13%", size: "0.8rem", rotate: "-9deg", opacity: 0.28 },
 	{ top: "33%", left: "19%", size: "1.4rem", rotate: "-13deg", opacity: 0.5 },
 	{ top: "1%", left: "26%", size: "1.9rem", rotate: "-10deg", opacity: 0.62 },
@@ -30,69 +30,82 @@ const stats = [
 ];
 ---
 
-<section id="program" class="relative bg-violet-ray">
-	<div id="program-pin" class="flex h-svh items-center overflow-hidden">
-		<img
-			src="/Bianca.png"
-			alt=""
-			aria-hidden="true"
-			class="absolute inset-0 h-full w-full object-cover"
-		/>
-		<div class="pointer-events-none absolute inset-0 bg-black/40" aria-hidden="true"></div>
+<section id="program" class="relative overflow-hidden bg-violet-ray py-12 lg:py-36">
+	<div class="pointer-events-none absolute inset-0 bg-black/20" aria-hidden="true"></div>
 
-		<div class="pointer-events-none absolute inset-0" aria-hidden="true">
-			<div class="bg-noise absolute inset-0 opacity-[0.03] mix-blend-multiply"></div>
-			<div class="absolute -top-24 left-1/4 h-80 w-80 rounded-full bg-white/10 blur-3xl"></div>
+	<div class="pointer-events-none absolute inset-0" aria-hidden="true">
+		<div class="bg-noise absolute inset-0 opacity-[0.03] mix-blend-multiply"></div>
+		<div class="absolute -top-24 left-1/4 h-80 w-80 rounded-full bg-white/10 blur-3xl"></div>
 
-			{
-				butterflies.map((b) => (
-					<div
-						class="absolute bg-white"
-						style={{
-							top: b.top,
-							left: b.left,
-							height: b.size,
-							width: b.size,
-							opacity: b.opacity,
-							transform: `rotate(${b.rotate})`,
-							"-webkit-mask-image": "url(/butterflymask.webp)",
-							"mask-image": "url(/butterflymask.webp)",
-							"-webkit-mask-size": "contain",
-							"mask-size": "contain",
-							"-webkit-mask-repeat": "no-repeat",
-							"mask-repeat": "no-repeat",
-							"-webkit-mask-position": "center",
-							"mask-position": "center",
-						}}
-					/>
-				))
-			}
+		{
+			butterflies.map((b) => (
+				<div
+					class="absolute bg-white"
+					style={{
+						top: b.top,
+						left: b.left,
+						height: b.size,
+						width: b.size,
+						opacity: b.opacity,
+						transform: `rotate(${b.rotate})`,
+						"-webkit-mask-image": "url(/butterflymask.webp)",
+						"mask-image": "url(/butterflymask.webp)",
+						"-webkit-mask-size": "contain",
+						"mask-size": "contain",
+						"-webkit-mask-repeat": "no-repeat",
+						"mask-repeat": "no-repeat",
+						"-webkit-mask-position": "center",
+						"mask-position": "center",
+					}}
+				/>
+			))
+		}
+	</div>
 
+	<div class="container-page relative z-10">
+		<div class="mx-auto max-w-3xl text-center">
+			<img
+				src="/BCA2.png"
+				alt="Bianca's Closer Academy"
+				class="mx-auto mb-6 h-28 w-auto lg:h-36"
+			/>
+			<h2 class="-rotate-2 text-balance font-script text-5xl leading-tight font-semibold text-white lg:text-6xl">
+				Bianca's Closer Academy
+			</h2>
+			<p class="mx-auto mt-6 text-balance text-sm leading-relaxed text-white lg:text-xl">
+				We're not some people who closed a few deals and decided to call ourselves "an academy."
+				We're professionals backed with 8+ years of experience, serving huge businesses across
+				different industries and turning fresh newbies into highly skilled, professionally trained
+				remote sales closers businesses heavily rely on.
+			</p>
+		</div>
+
+		<div class="mx-auto mt-2 grid max-w-sm grid-cols-1 gap-y-2 gap-x-0 lg:mt-4 lg:max-w-6xl lg:grid-cols-3 lg:gap-y-2">
 			{
 				stats.map((s, i) => (
 					<div
-						class="stat-butterfly absolute top-1/2 z-20 flex h-80 w-80 flex-col items-center justify-center bg-white p-4 text-center will-change-transform [--lane-scale:0.22] lg:h-136 lg:w-136 lg:[--lane-scale:1]"
-						data-index={i}
-						data-total={stats.length}
-						style={{
-							left: `calc(50% + ${s.offset}% * var(--lane-scale))`,
-							// Matches the JS-computed "local progress = 0" position
-							// (fully below the section) so there's nothing to flash
-							// before GSAP's first onUpdate call takes over.
-							transform: "translate(-50%, calc(-50% + 65vh + 60%))",
-							"-webkit-mask-image": "url(/butterfly3.webp)",
-							"mask-image": "url(/butterfly3.webp)",
-							"-webkit-mask-size": "contain",
-							"mask-size": "contain",
-							"-webkit-mask-repeat": "no-repeat",
-							"mask-repeat": "no-repeat",
-							"-webkit-mask-position": "center",
-							"mask-position": "center",
-						}}
+						class:list={[
+							"relative isolate aspect-[4/3] scale-100 translate-y-0 lg:translate-y-0",
+							i % 3 === 1 && "lg:translate-y-20",
+						]}
 					>
-						<div class="translate-y-3 lg:translate-y-6">
-							<p class="font-sans text-2xl font-bold text-violet-ray lg:text-4xl">{s.value}</p>
-							<p class="mt-2 max-w-56 text-xs leading-snug font-bold text-violet-ray/70 lg:max-w-80 lg:text-base">
+						<div
+							class="pointer-events-none absolute inset-0 bg-white"
+							style={{
+								"-webkit-mask-image": "url(/butterflybadge.png)",
+								"mask-image": "url(/butterflybadge.png)",
+								"-webkit-mask-size": "contain",
+								"mask-size": "contain",
+								"-webkit-mask-repeat": "no-repeat",
+								"mask-repeat": "no-repeat",
+								"-webkit-mask-position": "center",
+								"mask-position": "center",
+							}}
+							aria-hidden="true"
+						/>
+						<div class="absolute inset-0 flex -rotate-6 flex-col items-center justify-center p-3 text-center">
+							<p class="font-script text-3xl font-bold text-white lg:text-2xl">{s.value}</p>
+							<p class="mt-1 max-w-28 text-[0.45em] leading-snug font-bold text-white/90 lg:max-w-36 lg:text-xs">
 								{s.label}
 							</p>
 						</div>
@@ -100,90 +113,5 @@ const stats = [
 				))
 			}
 		</div>
-
-		<div class="container-page relative z-10 w-full">
-			<div class="mx-auto max-w-3xl text-center">
-				<img
-					src="/BCA2.png"
-					alt="Bianca's Closer Academy"
-					class="mx-auto mb-6 h-28 w-auto lg:h-36"
-				/>
-				<h2 class="-rotate-2 text-balance font-script text-5xl leading-tight font-semibold text-white lg:text-6xl">
-					Bianca's Closer Academy
-				</h2>
-				<p class="mx-auto mt-6 text-balance text-lg leading-relaxed text-white lg:text-xl">
-					Made it its sole purpose to guide newbies who are absolutely green to the world of
-					high-ticket remote sales and help them build a better financial life without committing
-					their time to 9-to-5s that cap their income.
-				</p>
-			</div>
-		</div>
 	</div>
 </section>
-
-<script>
-	import { gsap } from "gsap";
-	import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-	gsap.registerPlugin(ScrollTrigger);
-
-	// Mobile browsers fire resize events when the address bar collapses/expands
-	// mid-scroll; without this, ScrollTrigger treats that as a layout change and
-	// re-measures the pin, causing it to visibly jump. normalizeScroll smooths
-	// out mobile scroll behavior around pinning for the same reason.
-	ScrollTrigger.config({ ignoreMobileResize: true });
-	ScrollTrigger.normalizeScroll(true);
-
-	function initProgramButterflies() {
-		const section = document.getElementById("program");
-		const pinTarget = document.getElementById("program-pin");
-		if (!section || !pinTarget) return;
-
-		const items = Array.from(
-			section.querySelectorAll<HTMLElement>(".stat-butterfly")
-		);
-
-		ScrollTrigger.create({
-			trigger: section,
-			start: "top top",
-			end: () => `+=${window.innerHeight * items.length * 0.9}`,
-			pin: pinTarget,
-			scrub: true,
-			invalidateOnRefresh: true,
-			onUpdate: (self) => {
-				const progress = self.progress;
-
-				items.forEach((item) => {
-					const index = Number(item.dataset.index);
-					const total = Number(item.dataset.total);
-					// Windows are wider than the step between them, so consecutive
-					// butterflies' travel overlaps and two can be on screen together.
-					const step = 1 / total;
-					const windowSize = step * 2.6;
-					const start = index * step;
-					const end = start + windowSize;
-					// The last window's end extends past 1, so rescale progress
-					// against it — otherwise the section runs out of scroll room
-					// before the final butterfly finishes exiting.
-					const lastEnd = (total - 1) * step + windowSize;
-					const scaledProgress = progress * lastEnd;
-					const local = Math.min(Math.max((scaledProgress - start) / (end - start), 0), 1);
-
-					// Travels from fully below the section to fully clipped out
-					// above it, passing through the visible center. The offset
-					// combines viewport-relative (vh) and self-relative (%)
-					// clearance so it fully clears regardless of viewport height
-					// or the butterfly's own size.
-					const vhOffset = 65 + local * -130;
-					const selfOffset = 60 + local * -120;
-
-					gsap.set(item, {
-						transform: `translate(-50%, calc(-50% + ${vhOffset}vh + ${selfOffset}%))`,
-					});
-				});
-			},
-		});
-	}
-
-	initProgramButterflies();
-</script>
